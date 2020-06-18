@@ -41,23 +41,25 @@ class KykeonBakeToStrip_OT_Operator(bpy.types.Operator):
                 instructions_file = open(instr_filepath, 'r')
                 instructions_csv = instructions_file.read()
                 instructions_csv_lines = instructions_csv.split('\n')
-                instruction = {'part':'','name':'', 'start':0, 'end':0, 'speed':100}
+                instruction = {'part':'','action':'', 'name':'', 'start':0, 'end':0, 'speed':100}
                 
                 for line in instructions_csv_lines:
                     print(line)
                     if len(line)>0 or line !='' :
                         fields = line.split(';')
-                        field_per_line = 5
+                        field_per_line = 6
                         for i, field in enumerate(fields):
                             if i%field_per_line == 0:
                                 instruction['part'] = field
                             if i%field_per_line == 1:
-                                instruction['name'] = field
+                                instruction['action'] = field
                             if i%field_per_line == 2:
-                                instruction['start'] = int(field)
+                                instruction['name'] = field
                             if i%field_per_line == 3:
-                                instruction['end'] = int(field)
+                                instruction['start'] = int(field)
                             if i%field_per_line == 4:
+                                instruction['end'] = int(field)
+                            if i%field_per_line == 5:
                                 instruction['speed'] = int(field)
                         instructions.append(instruction)
                         #---//TODO---------#
@@ -84,7 +86,7 @@ class KykeonBakeToStrip_OT_Operator(bpy.types.Operator):
                 print('Single Bake Range')
                 kykeon_prop =   context.scene.kykeon       
                 #print(instructions_csv_lines)
-                instruction = {'part':kykeon_prop.str_part,'name':kykeon_prop.str_name, 'start':kykeon_prop.int_start_frame, 'end':kykeon_prop.int_end_frame, 'speed':kykeon_prop.float_speed}
+                instruction = {'part':kykeon_prop.str_part, 'action':kykeon_prop.str_act , 'name':kykeon_prop.str_name, 'start':kykeon_prop.int_start_frame, 'end':kykeon_prop.int_end_frame, 'speed':kykeon_prop.float_speed}
                 print(instruction)
                 print('Operator Executed')
 

@@ -6,7 +6,9 @@ class KykeonSettings(bpy.types.PropertyGroup):
     bool_from_file : bpy.props.BoolProperty(name='from_file', default=True)
     bool_single_range : bpy.props.BoolProperty(name='single', default=False)
 
-    str_part : bpy.props.StringProperty(name='Part Name', default='NewPart')
+    
+    str_part : bpy.props.StringProperty(name='Part Name', default='Pt')
+    str_act : bpy.props.StringProperty(name='Action Name', default='Act')
     str_name : bpy.props.StringProperty(name='Strip Name', default='NewAction')
     int_start_frame : bpy.props.IntProperty(name='Start Frame', default=0)
     int_end_frame : bpy.props.IntProperty(name='End Frame', default=100)

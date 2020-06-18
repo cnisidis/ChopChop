@@ -17,8 +17,9 @@ def ToBakeToAction(instruction):
         return False
 
 
-    part = instruction['part']
-    name = instruction['name']
+    part    = instruction['part']
+    name    = instruction['name']
+    act     = instruction['action']
     frame_start = instruction['start']
     frame_end =  instruction['end']
     speed = float(instruction['speed'])
@@ -34,10 +35,10 @@ def ToBakeToAction(instruction):
         
         if action is not None:
             #new_action = bpy.data.actions[0]
-            action.name = name
+            action.name = dancer_name+'_'+part+'_'+name 
             
             track = tracks.new()
-            track.name = part+'_'+name 
+            track.name = 'Tk_'+dancer_name+'_'+part+'_'+name 
             strip = track.strips.new( action.name, action.frame_range[0], action)
             strip.frame_start = 1
             strip.frame_end = duration

@@ -23,9 +23,11 @@ class KYKEON_PT_SETTINGS(bpy.types.Panel):
         
         box = layout.box()
         row = box.row()
+        row.prop(context.scene.kykeon, 'str_name')
+        row = box.row()
         row.prop(context.scene.kykeon, 'str_part')
         row = box.row()
-        row.prop(context.scene.kykeon, 'str_name')
+        row.prop(context.scene.kykeon, 'str_act')
         row = box.row()
         row.prop(context.scene.kykeon, 'int_start_frame')
         row = box.row()
