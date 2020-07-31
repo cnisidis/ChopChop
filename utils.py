@@ -35,7 +35,7 @@ def ToBakeToAction(instruction):
         
         if action is not None:
             #new_action = bpy.data.actions[0]
-            action.name = dancer_name+'_'+part+'_'+name 
+            action.name = dancer_name+'_'+part+'_'+act+'_'+name 
             
             track = tracks.new()
             track.name = 'Tk_'+dancer_name+'_'+part+'_'+name 
